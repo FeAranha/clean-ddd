@@ -8,3 +8,15 @@ npm i
 # Clean Architecture
 
 ![CleanArchitecture](https://github.com/FeAranha/clean-ddd/assets/28874783/9d096a12-eb76-449b-8407-f97d73356619)
+
+# Errors, keyworlds
+
+- Left: falha
+- Right: sucesso
+- fluxo sempre continuo: UI -> CTRL -> Use-Case -> Entitie -> Use-case -> repository -> DataBase
+
+Caso de certo sempre vai para direita ->
+
+## libs: caso necessario
+
+ - purify: functional programming library for TypeScript
