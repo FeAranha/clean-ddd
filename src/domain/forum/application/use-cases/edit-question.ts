@@ -1,12 +1,12 @@
-import { Either, left, right } from "@/core/either"
-import { QuestionsRepository } from "../repositories/questions-repository"
+import { Either, left, right } from '@/core/either'
+import { QuestionsRepository } from '../repositories/questions-repository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
-import { ResourceNotFoundError } from "../../../../core/errors/errors/resource-not-found-error"
-import { NotAllowedError } from "../../../../core/errors/errors/not-allowed-error"
-import { QuestionAttachmentsRepository } from "../repositories/question-attachments-repository"
-import { QuestionAttachmentList } from "../../enterprise/entities/question-attachment-list"
-import { QuestionAttachment } from "../../enterprise/entities/question-attachment"
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
+import { ResourceNotFoundError } from '../../../../core/errors/errors/resource-not-found-error'
+import { NotAllowedError } from '../../../../core/errors/errors/not-allowed-error'
+import { QuestionAttachmentsRepository } from '../repositories/question-attachments-repository'
+import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list'
+import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 interface EditQuestionUseCaseRequest {
   authorId: string
@@ -16,22 +16,25 @@ interface EditQuestionUseCaseRequest {
   attachmentsIds: string[]
 }
 
-type EditQuestionUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {
-  question: Question
-}>
+type EditQuestionUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {
+    question: Question
+  }
+>
 
 export class EditQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
-    private questionAttachmentsRepository: QuestionAttachmentsRepository
-  ) { }
+    private questionAttachmentsRepository: QuestionAttachmentsRepository,
+  ) {}
 
   async execute({
     authorId,
     questionId,
     title,
     content,
-    attachmentsIds
+    attachmentsIds,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 

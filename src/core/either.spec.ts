@@ -1,7 +1,7 @@
-import { Either, left, right } from "./either"
+import { Either, left, right } from './either'
 
 function doSomeThing(shouldSuccess: boolean): Either<string, number> {
-  if(shouldSuccess) {
+  if (shouldSuccess) {
     return right(10)
   } else {
     return left('error')
